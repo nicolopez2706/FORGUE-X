@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>FORGUE X | Checkout</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            FORGUE<span>X</span>
+        </a>
+
+        <nav>
+
+            <a href="index.html">
+                Inicio
+            </a>
+
+            <a href="equipamiento.html">
+                Equipamiento
+            </a>
+
+            <a href="wods.html">
+                WODs
+            </a>
+
+            <a href="hyrox.html">
+                HYROX
+            </a>
+
+            <a href="carrito.html">
+                🛒 Carrito
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- CHECKOUT -->
+
+    <main>
+
+        <section class="page-header">
+
+            <p class="eyebrow">
+                FORGUE X STORE
+            </p>
+
+            <h1>
+                FINALIZAR<br>
+                <span>COMPRA.</span>
+            </h1>
+
+            <p>
+                Completá tus datos para realizar el pedido.
+            </p>
+
+        </section>
+
+
+        <section class="checkout-section">
+
+            <!-- DATOS DEL CLIENTE -->
+
+            <div class="checkout-form">
+
+                <p class="eyebrow">
+                    DATOS DEL CLIENTE
+                </p>
+
+                <h2>
+                    INFORMACIÓN
+                </h2>
+
+
+                <div class="form-group">
+
+                    <label for="name">
+                        NOMBRE Y APELLIDO
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Tu nombre completo"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        EMAIL
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="tu@email.com"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        TELÉFONO
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="+54 9 ..."
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="address">
+                        DIRECCIÓN
+                    </label>
+
+                    <input
+                        type="text"
+                        id="address"
+                        placeholder="Calle y número"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="city">
+                        CIUDAD
+                    </label>
+
+                    <input
+                        type="text"
+                        id="city"
+                        placeholder="Córdoba"
+                    >
+
+                </div>
+
+
+                <button
+                    class="add-cart"
+                    id="confirm-order"
+                >
+
+                    CONFIRMAR PEDIDO
+
+                    <span>→</span>
+
+                </button>
+
+            </div>
+
+
+            <!-- RESUMEN -->
+
+            <div class="checkout-summary">
+
+                <p class="eyebrow">
+                    TU PEDIDO
+                </p>
+
+                <h2>
+                    RESUMEN
+                </h2>
+
+
+                <div id="checkout-items">
+
+                    <!-- Productos -->
+
+                </div>
+
+
+                <div class="checkout-total">
+
+                    <span>
+                        TOTAL
+                    </span>
+
+                    <strong id="checkout-total">
+                        $0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-inner">
+
+            <a href="index.html" class="logo">
+                FORGUE<span>X</span>
+            </a>
+
+            <div class="footer-links">
+
+                <a href="index.html">
+                    Inicio
+                </a>
+
+                <a href="equipamiento.html">
+                    Equipamiento
+                </a>
+
+                <a href="wods.html">
+                    WODs
+                </a>
+
+                <a href="hyrox.html">
+                    HYROX
+                </a>
+
+            </div>
+
+            <p>
+                TRAIN HARDER. GO FURTHER.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- CART -->
+
+    <script src="cart.js"></script>
+
+
+    <script>
+
+        const checkoutItems =
+            document.getElementById("checkout-items");
+
+        const checkoutTotal =
+            document.getElementById("checkout-total");
+
+
+        function renderCheckout() {
+
+            checkoutItems.innerHTML = "";
+
+
+            if (cart.length === 0) {
+
+                checkoutItems.innerHTML = `
+                    <p>
+                        Tu carrito está vacío.
+                    </p>
+                `;
+
+                checkoutTotal.textContent = "$0";
+
+                return;
+            }
+
+
+            cart.forEach(product => {
+
+                const item =
+                    document.createElement("div");
+
+                item.className =
+                    "checkout-item";
+
+
+                item.innerHTML = `
+
+                    <div>
+
+                        <strong>
+                            ${product.name}
+                        </strong>
+
+                        <span>
+                            × ${product.quantity}
+                        </span>
+
+                    </div>
+
+                    <strong>
+                        $${(
+                            product.price *
+                            product.quantity
+                        ).toLocaleString("es-AR")}
+                    </strong>
+
+                `;
+
+
+                checkoutItems.appendChild(item);
+
+            });
+
+
+            checkoutTotal.textContent =
+                "$" +
+                getCartTotal().toLocaleString("es-AR");
+
+        }
+
+
+        renderCheckout();
+
+
+        // CONFIRMAR PEDIDO
+
+        document
+            .getElementById("confirm-order")
+            .addEventListener("click", function () {
+
+                const name =
+                    document.getElementById("name").value;
+
+                const email =
+                    document.getElementById("email").value;
+
+                const phone =
+                    document.getElementById("phone").value;
+
+                const address =
+                    document.getElementById("address").value;
+
+                const city =
+                    document.getElementById("city").value;
+
+
+                if (
+                    !name ||
+                    !email ||
+                    !phone ||
+                    !address ||
+                    !city
+                ) {
+
+                    alert(
+                        "Completá todos los campos antes de continuar."
+                    );
+
+                    return;
+                }
+
+
+                alert(
+                    "¡Pedido recibido! Gracias por comprar en FORGUE X."
+                );
+
+            });
+
+    </script>
+
+</body>
+
+</html>

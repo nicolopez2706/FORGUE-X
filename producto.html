@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FORGUE X | Producto</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            FORGUE<span>X</span>
+        </a>
+
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="equipamiento.html" class="active">Equipamiento</a>
+            <a href="wods.html">WODs</a>
+            <a href="hyrox.html">HYROX</a>
+            <a href="carrito.html" class="cart-nav">
+    🛒 CARRITO <span id="cart-count">0</span>
+</a>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- PRODUCT DETAIL -->
+        <section class="product-detail">
+
+            <a href="equipamiento.html" class="back-link">
+                ← VOLVER A EQUIPAMIENTO
+            </a>
+
+
+            <div class="product-detail-grid">
+
+                <!-- VISUAL -->
+                <div class="product-detail-visual">
+
+                    <span id="product-visual">~
+                        BARBELL
+                    </span>
+
+                </div>
+
+
+                <!-- INFORMATION -->
+                <div class="product-detail-info">
+
+                    <span class="product-category" id="product-category">
+                        OLYMPIC
+                    </span>
+
+                    <h1 id="product-name">
+                        Barra Olímpica
+                    </h1>
+
+                    <p class="product-description" id="product-description">
+                        Barra olímpica diseñada para levantamientos
+                        olímpicos y entrenamiento de fuerza.
+                    </p>
+
+                    <div class="product-price" id="product-price">
+                        $250.000
+                    </div>
+
+                    <div class="weight-selector" id="weight-selector-container" hidden>
+                        <label for="weight-selector">PESO</label>
+                        <select id="weight-selector"></select>
+                    </div>
+
+
+                    <div class="product-specs">
+
+                        <div class="spec">
+                            <span>PESO</span>
+                            <strong id="product-weight">20 KG</strong>
+                        </div>
+
+                        <div class="spec">
+                            <span>LARGO</span>
+                            <strong id="product-length">220 CM</strong>
+                        </div>
+
+                        <div class="spec">
+                            <span>DIÁMETRO</span>
+                            <strong id="product-diameter">28 MM</strong>
+                        </div>
+
+                        <div class="spec">
+                            <span>USO</span>
+                            <strong id="product-use">WEIGHTLIFTING</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="detail-quantity">
+                        <span>CANTIDAD</span>
+                        <div class="quantity-control">
+                            <button type="button" class="quantity-button" id="decrease-quantity" aria-label="Reducir cantidad">−</button>
+                            <span id="product-quantity" aria-live="polite">1</span>
+                            <button type="button" class="quantity-button" id="increase-quantity" aria-label="Aumentar cantidad">+</button>
+                        </div>
+                    </div>
+
+
+                   <button class="add-cart" id="add-cart">
+    AGREGAR AL CARRITO
+    <span>→</span>
+                   </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-inner">
+
+            <a href="index.html" class="logo">
+                FORGUE<span>X</span>
+            </a>
+
+            <div class="footer-links">
+
+                <a href="index.html">Inicio</a>
+                <a href="equipamiento.html">Equipamiento</a>
+                <a href="wods.html">WODs</a>
+                <a href="hyrox.html">HYROX</a>
+
+            </div>
+
+            <p>
+                TRAIN HARDER. GO FURTHER.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- PRODUCT DATA -->
+    <script>
+
+        const products = {
+
+            1: {
+                visual: "BARBELL",
+                category: "OLYMPIC",
+                name: "Barra Olímpica",
+                description:
+                    "Barra olímpica diseñada para levantamientos olímpicos y entrenamiento de fuerza.",
+                price: "$250.000",
+                weight: "20 KG",
+                length: "220 CM",
+                diameter: "28 MM",
+                use: "WEIGHTLIFTING"
+            },
+
+            2: {
+                visual: "BUMPER",
+                category: "WEIGHTLIFTING",
+                name: "Discos Bumper",
+                description:
+                    "Discos de caucho diseñados para levantamientos y entrenamientos de alta intensidad.",
+                price: "$180.000",
+                weight: "20 KG",
+                length: "—",
+                diameter: "—",
+                use: "WEIGHTLIFTING"
+            },
+
+            3: {
+                visual: "KETTLEBELL",
+                category: "FUNCTIONAL",
+                name: "Kettlebell 24 KG",
+                description:
+                    "Kettlebell de 24 kg para movimientos funcionales, fuerza y acondicionamiento.",
+                price: "$95.000",
+                weight: "24 KG",
+                length: "—",
+                diameter: "—",
+                use: "FUNCTIONAL"
+            },
+
+            4: {
+                visual: "DUMBBELL",
+                category: "STRENGTH",
+                name: "Mancuerna 20 KG",
+                description:
+                    "Mancuerna de 20 kg para ejercicios de fuerza y entrenamiento funcional.",
+                price: "$75.000",
+                weight: "20 KG",
+                length: "—",
+                diameter: "—",
+                use: "STRENGTH"
+            },
+
+            5: {
+                visual: "ROPE",
+                category: "CARDIO",
+                name: "Speed Rope",
+                description:
+                    "Cuerda de velocidad para mejorar coordinación, resistencia y capacidad cardiovascular.",
+                price: "$35.000",
+                weight: "—",
+                length: "AJUSTABLE",
+                diameter: "—",
+                use: "CARDIO"
+            },
+
+            6: {
+                visual: "BOX",
+                category: "PLYOMETRIC",
+                name: "Box Pliométrico",
+                description:
+                    "Box diseñado para saltos, trabajo pliométrico y entrenamiento funcional.",
+                price: "$120.000",
+                weight: "—",
+                length: "—",
+                diameter: "—",
+                use: "PLYOMETRIC"
+            },
+
+            7: {
+                visual: "PLATES",
+                category: "WEIGHTLIFTING",
+                name: "Fractional Plates",
+                description:
+                    "Discos fraccionales para realizar progresiones precisas de carga.",
+                price: "$45.000",
+                weight: "VARIABLE",
+                length: "—",
+                diameter: "—",
+                use: "WEIGHTLIFTING"
+            },
+
+            8: {
+                visual: "RINGS",
+                category: "GYMNASTICS",
+                name: "Anillas Olímpicas",
+                description:
+                    "Anillas para movimientos gimnásticos, fuerza y entrenamiento con peso corporal.",
+                price: "$60.000",
+                weight: "—",
+                length: "—",
+                diameter: "—",
+                use: "GYMNASTICS"
+            }
+
+        };
+
+
+        // Obtener ID desde la URL
+
+        const params = new URLSearchParams(window.location.search);
+
+        const id = params.get("id") || "1";
+
+        const product = products[id];
+
+
+        const variantData = {
+            1: {
+                options: {
+                    10: { price: "$220.000", length: "180 CM", diameter: "25 MM" },
+                    15: { price: "$235.000", length: "201 CM", diameter: "28 MM" },
+                    20: { price: "$250.000", length: "220 CM", diameter: "28 MM" }
+                },
+                unit: "KG"
+            },
+            3: {
+                options: {
+                    8: { price: "$55.000", length: "21 CM", diameter: "14 CM" },
+                    12: { price: "$65.000", length: "22 CM", diameter: "15 CM" },
+                    16: { price: "$75.000", length: "23 CM", diameter: "16 CM" },
+                    20: { price: "$85.000", length: "24 CM", diameter: "17 CM" },
+                    24: { price: "$95.000", length: "25 CM", diameter: "18 CM" },
+                    28: { price: "$110.000", length: "26 CM", diameter: "19 CM" },
+                    32: { price: "$125.000", length: "27 CM", diameter: "20 CM" }
+                },
+                unit: "KG"
+            },
+            4: {
+                options: {
+                    2: { price: "$18.000", length: "16 CM", diameter: "5 CM" },
+                    4: { price: "$25.000", length: "18 CM", diameter: "6 CM" },
+                    6: { price: "$32.000", length: "20 CM", diameter: "7 CM" },
+                    8: { price: "$42.000", length: "22 CM", diameter: "8 CM" },
+                    10: { price: "$52.000", length: "24 CM", diameter: "9 CM" },
+                    12: { price: "$62.000", length: "26 CM", diameter: "10 CM" },
+                    14: { price: "$72.000", length: "28 CM", diameter: "11 CM" },
+                    16: { price: "$82.000", length: "30 CM", diameter: "12 CM" },
+                    18: { price: "$92.000", length: "32 CM", diameter: "13 CM" },
+                    20: { price: "$102.000", length: "34 CM", diameter: "14 CM" },
+                    22: { price: "$112.000", length: "36 CM", diameter: "15 CM" },
+                    24: { price: "$122.000", length: "38 CM", diameter: "16 CM" },
+                    26: { price: "$132.000", length: "40 CM", diameter: "17 CM" },
+                    28: { price: "$142.000", length: "42 CM", diameter: "18 CM" },
+                    30: { price: "$152.000", length: "44 CM", diameter: "19 CM" }
+                },
+                unit: "KG"
+            }
+        };
+
+        const selectedVariant = variantData[id];
+        const weightSelectorContainer = document.getElementById("weight-selector-container");
+        const weightSelector = document.getElementById("weight-selector");
+        const quantityElement = document.getElementById("product-quantity");
+        let selectedQuantity = 1;
+
+        document.getElementById("decrease-quantity").addEventListener("click", function () {
+            selectedQuantity = Math.max(1, selectedQuantity - 1);
+            quantityElement.textContent = selectedQuantity;
+        });
+
+        document.getElementById("increase-quantity").addEventListener("click", function () {
+            selectedQuantity++;
+            quantityElement.textContent = selectedQuantity;
+        });
+
+        if (selectedVariant) {
+            weightSelectorContainer.hidden = false;
+
+            Object.keys(selectedVariant.options).forEach(function (weight) {
+                const option = document.createElement("option");
+                option.value = weight;
+                option.textContent = weight + " " + selectedVariant.unit;
+                option.selected = weight === product.weight.replace(" KG", "");
+                weightSelector.appendChild(option);
+            });
+        }
+
+        function updateProductVariant() {
+            const weight = weightSelector.value;
+            const variant = selectedVariant.options[weight];
+            const weightLabel = weight + " " + selectedVariant.unit;
+
+            product.name = product.name.replace(/ \d+ KG$/, "") + " " + weightLabel;
+            product.weight = weightLabel;
+            product.price = variant.price;
+            product.length = variant.length;
+            product.diameter = variant.diameter;
+
+            document.getElementById("product-name").textContent = product.name;
+            document.getElementById("product-price").textContent = product.price;
+            document.getElementById("product-weight").textContent = product.weight;
+            document.getElementById("product-length").textContent = product.length;
+            document.getElementById("product-diameter").textContent = product.diameter;
+            document.title = "FORGUE X | " + product.name;
+        }
+
+        if (selectedVariant) {
+            weightSelector.addEventListener("change", updateProductVariant);
+        }
+
+        // Actualizar página
+
+        if (product) {
+
+            document.getElementById("product-visual").textContent =
+                product.visual;
+
+            document.getElementById("product-category").textContent =
+                product.category;
+
+            document.getElementById("product-name").textContent =
+                product.name;
+
+            document.getElementById("product-description").textContent =
+                product.description;
+
+            document.getElementById("product-price").textContent =
+                product.price;
+
+            document.getElementById("product-weight").textContent =
+                product.weight;
+
+            document.getElementById("product-length").textContent =
+                product.length;
+
+            document.getElementById("product-diameter").textContent =
+                product.diameter;
+
+            document.getElementById("product-use").textContent =
+                product.use;
+
+            document.title =
+                "FORGUE X | " + product.name;
+
+        }
+        // AGREGAR PRODUCTO AL CARRITO
+
+        const addCartButton = document.getElementById("add-cart");
+
+        if (product && addCartButton) {
+
+           addCartButton.addEventListener("click", function () {
+
+    const priceNumber =
+        Number(product.price.replace(/\D/g, ""));
+
+    addToCart(
+        id + "-" + product.weight,
+        product.name,
+        priceNumber,
+        selectedQuantity
+    );
+
+    addCartButton.innerHTML = "✓ AGREGADO <span>→</span>";
+
+    setTimeout(function () {
+
+        addCartButton.innerHTML =
+            'AGREGAR AL CARRITO <span>→</span>';
+
+    }, 1500);
+
+});
+
+        }
+    </script>
+    <script src="cart.js"></script>
+    <script src="cart.js"></script>
+
+</body>
+</html>

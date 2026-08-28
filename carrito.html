@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FORGUE X | Carrito</title>
+
+    <link rel="stylesheet" href="style.css?v=2">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            FORGUE<span>X</span>
+        </a>
+
+        <nav>
+
+            <a href="index.html">Inicio</a>
+
+            <a href="equipamiento.html">
+                Equipamiento
+            </a>
+
+            <a href="wods.html">
+                WODs
+            </a>
+
+            <a href="hyrox.html">
+                HYROX
+            </a>
+
+            <a href="carrito.html" class="active">
+                🛒 Carrito
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- CONTENIDO -->
+
+    <main>
+
+        <section class="page-header">
+
+            <p class="eyebrow">
+                FORGUE X STORE
+            </p>
+
+            <h1>
+                TU<br>
+                <span>CARRITO.</span>
+            </h1>
+
+            <p>
+                Revisá tus productos antes de continuar.
+            </p>
+
+        </section>
+
+
+        <section class="cart-section">
+
+            <div id="cart-items">
+
+                <!-- Los productos aparecerán acá -->
+
+            </div>
+
+
+            <div class="cart-summary">
+
+                <div>
+                    <span>SUBTOTAL</span>
+
+                    <strong id="cart-total">
+                        $0
+                    </strong>
+                </div>
+
+
+                <button class="add-cart" id="checkout-button">
+
+                    CONTINUAR
+
+                    <span>→</span>
+
+                </button>
+                <script>
+
+    document
+        .getElementById("checkout-button")
+        .addEventListener("click", function () {
+
+            if (cart.length === 0) {
+
+                alert(
+                    "Tu carrito está vacío."
+                );
+
+                return;
+            }
+
+            window.location.href =
+                "checkout.html";
+
+        });
+
+</script>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-inner">
+
+            <a href="index.html" class="logo">
+                FORGUE<span>X</span>
+            </a>
+
+            <div class="footer-links">
+
+                <a href="index.html">
+                    Inicio
+                </a>
+
+                <a href="equipamiento.html">
+                    Equipamiento
+                </a>
+
+                <a href="wods.html">
+                    WODs
+                </a>
+
+                <a href="hyrox.html">
+                    HYROX
+                </a>
+
+            </div>
+
+            <p>
+                TRAIN HARDER. GO FURTHER.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="cart.js"></script>
+
+
+    <script>
+
+        function renderCart() {
+
+            const container =
+                document.getElementById("cart-items");
+
+            const totalElement =
+                document.getElementById("cart-total");
+
+
+            if (cart.length === 0) {
+
+                container.innerHTML = `
+                    <div class="empty-cart">
+
+                        <h2>
+                            TU CARRITO ESTÁ VACÍO
+                        </h2>
+
+                        <p>
+                            Agregá equipamiento para comenzar.
+                        </p>
+
+                        <a href="equipamiento.html">
+                            VER EQUIPAMIENTO →
+                        </a>
+
+                    </div>
+                `;
+
+                totalElement.textContent = "$0";
+
+                return;
+
+            }
+
+
+            container.innerHTML = "";
+
+
+            cart.forEach(product => {
+
+                const item =
+                    document.createElement("article");
+
+                item.className = "cart-item";
+
+
+                item.innerHTML = `
+
+                    <div class="cart-item-info">
+
+                        <span class="product-category">
+                            EQUIPAMIENTO
+                        </span>
+
+                        <h3>
+                            ${product.name}
+                        </h3>
+
+                        <p>
+                            $${product.price.toLocaleString("es-AR")}
+                        </p>
+
+                    </div>
+
+
+                    <div class="cart-quantity">
+
+                        <button
+                            onclick="changeQuantity('${product.id}', -1)"
+                        >
+                            −
+                        </button>
+
+                        <strong>
+                            ${product.quantity}
+                        </strong>
+
+                        <button
+                            onclick="changeQuantity('${product.id}', 1)"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+
+                    <strong class="cart-item-total">
+
+                        $${(
+                            product.price *
+                            product.quantity
+                        ).toLocaleString("es-AR")}
+
+                    </strong>
+
+
+                    <button
+                        class="remove-cart"
+                        onclick="removeFromCart('${product.id}')"
+                    >
+                        ELIMINAR
+                    </button>
+
+                `;
+
+
+                container.appendChild(item);
+
+            });
+
+
+            totalElement.textContent =
+                "$" +
+                getCartTotal().toLocaleString("es-AR");
+
+        }
+
+
+        function changeQuantity(id, amount) {
+
+            const product =
+                cart.find(item => item.id === id);
+
+
+            if (!product) return;
+
+
+            product.quantity += amount;
+
+
+            if (product.quantity <= 0) {
+
+                cart =
+                    cart.filter(item => item.id !== id);
+
+            }
+
+
+            saveCart();
+
+            renderCart();
+
+        }
+
+
+        function removeFromCart(id) {
+
+            cart =
+                cart.filter(item => item.id !== id);
+
+
+            saveCart();
+
+            renderCart();
+
+        }
+
+
+        renderCart();
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>FORGUE X | WOD</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+        FORGUE<span>X</span>
+    </a>
+
+
+    <nav>
+
+        <a href="index.html">
+            Inicio
+        </a>
+
+        <a href="equipamiento.html">
+            Equipamiento
+        </a>
+
+        <a href="wods.html" class="active">
+            WODs
+        </a>
+
+        <a href="hyrox.html">
+            HYROX
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main>
+
+    <section class="product-detail">
+
+        <a href="wods.html" class="back-link">
+            ← VOLVER A WODs
+        </a>
+
+
+        <div class="product-detail-grid">
+
+
+            <!-- VISUAL -->
+
+            <div class="product-detail-visual">
+
+                <span id="wod-type">
+                    FOR TIME
+                </span>
+
+            </div>
+
+
+
+            <!-- INFORMACIÓN -->
+
+            <div class="product-detail-info">
+
+                <span class="product-category"
+                      id="wod-category">
+
+                    CONDITIONING
+
+                </span>
+
+
+                <h1 id="wod-name">
+                    WOD 01 — ENGINE
+                </h1>
+
+
+                <p class="product-description"
+                   id="wod-description">
+
+                    Un entrenamiento diseñado para
+                    desarrollar capacidad aeróbica,
+                    resistencia y eficiencia bajo fatiga.
+
+                </p>
+
+
+                <div class="product-specs">
+
+
+                    <div class="spec">
+
+                        <span>FORMATO</span>
+
+                        <strong id="wod-format">
+                            FOR TIME
+                        </strong>
+
+                    </div>
+
+
+                    <div class="spec">
+
+                        <span>DIFICULTAD</span>
+
+                        <strong id="wod-level">
+                            INTERMEDIO
+                        </strong>
+
+                    </div>
+
+
+                    <div class="spec">
+
+                        <span>DURACIÓN</span>
+
+                        <strong id="wod-duration">
+                            VARIABLE
+                        </strong>
+
+                    </div>
+
+
+                    <div class="spec">
+
+                        <span>OBJETIVO</span>
+
+                        <strong id="wod-goal">
+                            ENDURANCE
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- WORKOUT -->
+
+                <div class="wod-workout">
+
+                    <span class="product-category">
+                        WORKOUT
+                    </span>
+
+
+                    <div id="wod-workout-content">
+
+                        5 RONDAS
+
+                        <br><br>
+
+                        400 M RUN
+
+                        <br>
+
+                        15 KETTLEBELL SWINGS
+
+                        <br>
+
+                        10 BURPEES
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<footer>
+
+    <div class="footer-inner">
+
+        <a href="index.html"
+           class="logo">
+
+            FORGUE<span>X</span>
+
+        </a>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Inicio
+            </a>
+
+            <a href="equipamiento.html">
+                Equipamiento
+            </a>
+
+            <a href="wods.html">
+                WODs
+            </a>
+
+            <a href="hyrox.html">
+                HYROX
+            </a>
+
+        </div>
+
+
+        <p>
+            TRAIN HARDER. GO FURTHER.
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<script>
+
+const wods = {
+
+    1: {
+
+        type: "FOR TIME",
+
+        category: "CONDITIONING",
+
+        name: "WOD 01 — ENGINE",
+
+        description:
+            "Un entrenamiento diseñado para desarrollar capacidad aeróbica, resistencia y eficiencia bajo fatiga.",
+
+        format: "FOR TIME",
+
+        level: "INTERMEDIO",
+
+        duration: "VARIABLE",
+
+        goal: "ENDURANCE",
+
+        workout:
+            "5 RONDAS|400 M RUN|15 KETTLEBELL SWINGS|10 BURPEES"
+
+    },
+
+
+    2: {
+
+        type: "AMRAP",
+
+        category: "STRENGTH",
+
+        name: "WOD 02 — POWER",
+
+        description:
+            "Trabajo de fuerza y potencia combinado con movimientos gimnásticos y pliométricos.",
+
+        format: "AMRAP",
+
+        level: "INTERMEDIO",
+
+        duration: "12 MIN",
+
+        goal: "POWER",
+
+        workout:
+            "12 MINUTOS|8 POWER CLEANS|10 BOX JUMPS|12 PUSH-UPS"
+
+    },
+
+
+    3: {
+
+        type: "EMOM",
+
+        category: "STRENGTH",
+
+        name: "WOD 03 — BARBELL",
+
+        description:
+            "Entrenamiento centrado en fuerza y control técnico bajo un formato EMOM.",
+
+        format: "EMOM",
+
+        level: "AVANZADO",
+
+        duration: "15 MIN",
+
+        goal: "STRENGTH",
+
+        workout:
+            "15 MINUTOS|MIN 1 — BACK SQUAT|MIN 2 — PULL-UPS|MIN 3 — SIT-UPS"
+
+    },
+
+
+    4: {
+
+        type: "CHIPPER",
+
+        category: "ENDURANCE",
+
+        name: "WOD 04 — GRINDER",
+
+        description:
+            "Un desafío de resistencia que combina carrera, trabajo metabólico y movimientos funcionales.",
+
+        format: "CHIPPER",
+
+        level: "AVANZADO",
+
+        duration: "VARIABLE",
+
+        goal: "ENDURANCE",
+
+        workout:
+            "800 M RUN|50 WALL BALLS|1000 M ROW|50 WALKING LUNGES"
+
+    },
+
+
+    5: {
+
+        type: "AMRAP",
+
+        category: "FULL BODY",
+
+        name: "WOD 05 — COMPLETE",
+
+        description:
+            "Trabajo continuo combinando fuerza, resistencia y movimientos funcionales.",
+
+        format: "AMRAP",
+
+        level: "INTERMEDIO",
+
+        duration: "20 MIN",
+
+        goal: "FULL BODY",
+
+        workout:
+            "20 MINUTOS|10 DEADLIFTS|15 WALL BALLS|10 BURPEES|200 M RUN"
+
+    },
+
+
+    6: {
+
+        type: "FOR TIME",
+
+        category: "GYMNASTICS",
+
+        name: "WOD 06 — SKILLS",
+
+        description:
+            "Un entrenamiento avanzado enfocado en habilidades gimnásticas y resistencia.",
+
+        format: "FOR TIME",
+
+        level: "AVANZADO",
+
+        duration: "VARIABLE",
+
+        goal: "GYMNASTICS",
+
+        workout:
+            "3 RONDAS|10 PULL-UPS|8 HANDSTAND PUSH-UPS|12 TOES-TO-BAR|400 M RUN"
+
+    }
+
+};
+
+
+
+const params = new URLSearchParams(window.location.search);
+
+const id = params.get("id") || "1";
+
+const wod = wods[id];
+
+
+if (wod) {
+
+    document.getElementById("wod-type").textContent =
+        wod.type;
+
+    document.getElementById("wod-category").textContent =
+        wod.category;
+
+    document.getElementById("wod-name").textContent =
+        wod.name;
+
+    document.getElementById("wod-description").textContent =
+        wod.description;
+
+    document.getElementById("wod-format").textContent =
+        wod.format;
+
+    document.getElementById("wod-level").textContent =
+        wod.level;
+
+    document.getElementById("wod-duration").textContent =
+        wod.duration;
+
+    document.getElementById("wod-goal").textContent =
+        wod.goal;
+
+
+    const workout =
+        wod.workout.split("|").join("<br>");
+
+    document.getElementById("wod-workout-content").innerHTML =
+        workout;
+
+
+    document.title =
+        "FORGUE X | " + wod.name;
+
+}
+
+</script>
+
+
+</body>
+
+</html>

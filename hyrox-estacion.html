@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORGUE X | HYROX PLAN</title>
+    <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+    <header class="navbar">
+        <a href="index.html" class="logo">FORGUE<span>X</span></a>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="equipamiento.html">Equipamiento</a>
+            <a href="wods.html">WODs</a>
+            <a href="hyrox.html" class="active">HYROX</a>
+            <a href="carrito.html" class="cart-nav">CARRITO <span id="cart-count">0</span></a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="product-detail">
+            <a href="hyrox.html" class="back-link">← VOLVER A HYROX</a>
+            <div class="product-detail-grid">
+                <div class="product-detail-visual"><span id="plan-type">BASE AERÓBICA</span></div>
+                <div class="product-detail-info">
+                    <span class="product-category" id="plan-category">PRINCIPIANTE</span>
+                    <h1 id="plan-name">PRIMER KILÓMETRO</h1>
+                    <p class="product-description" id="plan-description"></p>
+                    <div class="product-specs">
+                        <div class="spec"><span>DURACIÓN</span><strong id="plan-duration"></strong></div>
+                        <div class="spec"><span>NIVEL</span><strong id="plan-level"></strong></div>
+                        <div class="spec"><span>OBJETIVO</span><strong id="plan-goal"></strong></div>
+                        <div class="spec"><span>FORMATO</span><strong id="plan-format"></strong></div>
+                    </div>
+                    <div class="wod-workout">
+                        <span class="product-category">PLAN DE ENTRENAMIENTO</span>
+                        <div id="plan-workout-content"></div>
+                    </div>
+                    <div class="wod-workout">
+                        <span class="product-category">CLAVES DE LA SESIÓN</span>
+                        <div id="plan-strategy-content"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer><div class="footer-inner"><a href="index.html" class="logo">FORGUE<span>X</span></a><div class="footer-links"><a href="index.html">Inicio</a><a href="equipamiento.html">Equipamiento</a><a href="wods.html">WODs</a><a href="hyrox.html">HYROX</a></div><p>TRAIN HARDER. GO FURTHER.</p></div></footer>
+
+    <script>
+        const plans = {
+            1: { type: "BASE AERÓBICA", level: "PRINCIPIANTE", name: "PRIMER KILÓMETRO", description: "Construí confianza combinando carrera suave con movimientos básicos y controlados.", duration: "35 MIN", goal: "BASE AERÓBICA", format: "3 RONDAS", workout: "3 RONDAS|400 M RUN|500 M ROW|12 STEP-UPS|40 M FARMER CARRY|DESCANSO: 2 MINUTOS ENTRE RONDAS", strategy: "Mantené un ritmo conversacional en la carrera.|Priorizá una técnica estable y transiciones tranquilas.|Aumentá la carga solo si podés completar todas las rondas con control." },
+            2: { type: "CONTROL", level: "PRINCIPIANTE", name: "RITMO SOSTENIDO", description: "Aprendé a sostener un esfuerzo parejo sin perder técnica ni respiración.", duration: "40 MIN", goal: "PACING", format: "4 RONDAS", workout: "4 RONDAS|600 M RUN|400 M SKI ERG|10 WALL BALLS|12 REVERSE LUNGES|DESCANSO: 90 SEGUNDOS ENTRE RONDAS", strategy: "Salí por debajo de tu máximo.|Respirá de forma regular en los wall balls.|Buscá que la última ronda se parezca a la primera." },
+            3: { type: "SKILLS", level: "PRINCIPIANTE", name: "TÉCNICA EN ESTACIONES", description: "Mejorá posiciones, transiciones y economía antes de sumar intensidad.", duration: "30 MIN", goal: "TÉCNICA", format: "3 SERIES", workout: "3 SERIES|15 M SLED PUSH|6 BURPEES|400 M ROW|10 WALL BALLS|DESCANSO: 2 MINUTOS ENTRE SERIES", strategy: "Usá una carga que te permita moverte sin pausas largas.|Practicá entrar y salir de cada estación con calma.|La calidad técnica es prioridad." },
+            4: { type: "BUILD", level: "PRINCIPIANTE", name: "MOTOR COMPLETO", description: "Una sesión accesible para unir fuerza, carrera y capacidad de recuperación.", duration: "45 MIN", goal: "RESISTENCIA", format: "4 RONDAS", workout: "4 RONDAS|500 M RUN|12 KETTLEBELL DEADLIFTS|50 M FARMER CARRY|12 STEP-UPS|DESCANSO: 2 MINUTOS ENTRE RONDAS", strategy: "Mantené el tronco firme en cada repetición.|Elegí una carga sostenible para completar la distancia sin cortar.|Caminá durante el descanso y retomá con respiración controlada." },
+            5: { type: "ENGINE", level: "INTERMEDIO", name: "ENGINE MIXTO", description: "Alterná esfuerzos largos y estaciones exigentes para mejorar tu capacidad de trabajo.", duration: "50 MIN", goal: "RESISTENCIA BAJO FATIGA", format: "4 RONDAS", workout: "4 RONDAS|800 M RUN|500 M SKI ERG|20 M SLED PULL|8 BURPEE BROAD JUMPS|DESCANSO: 2 MINUTOS ENTRE RONDAS", strategy: "Controlá el primer kilómetro para reservar energía.|Mantené tirones cortos y continuos en el sled.|Aterrizá cada salto con estabilidad antes de volver a correr." },
+            6: { type: "POWER", level: "INTERMEDIO", name: "POTENCIA Y TRACCIÓN", description: "Desarrollá fuerza específica para mover cargas sin comprometer la carrera.", duration: "55 MIN", goal: "FUERZA FUNCIONAL", format: "5 RONDAS", workout: "5 RONDAS|600 M RUN|20 M SLED PUSH|20 M SLED PULL|60 M FARMER CARRY|DESCANSO: 2:30 MINUTOS ENTRE RONDAS", strategy: "Empujá el sled con pasos cortos y constantes.|Usá piernas y cadera para iniciar cada tirón.|Mantené el agarre firme sin elevar los hombros." },
+            7: { type: "RACE", level: "INTERMEDIO", name: "RACE BUILDER", description: "Simulá bloques de carrera y estación para practicar transiciones con ritmo de competencia.", duration: "60 MIN", goal: "RITMO DE CARRERA", format: "4 RONDAS", workout: "4 RONDAS|1 KM RUN|500 M ROW|20 M SANDBAG LUNGES|20 WALL BALLS|DESCANSO: 3 MINUTOS ENTRE RONDAS", strategy: "Definí un ritmo objetivo antes de empezar.|Dividí los wall balls en series sostenibles.|Registrá el tiempo de cada ronda para medir consistencia." },
+            8: { type: "THRESHOLD", level: "AVANZADO", name: "UMBRAL HYROX", description: "Trabajá cerca del límite para sostener potencia y velocidad cuando las piernas pesan.", duration: "60 MIN", goal: "TOLERANCIA AL LACTATO", format: "5 RONDAS", workout: "5 RONDAS|1 KM RUN|500 M SKI ERG|10 BURPEES|25 WALL BALLS|DESCANSO: 90 SEGUNDOS ENTRE RONDAS", strategy: "Sostené un ritmo fuerte pero repetible.|Evitá fallar repeticiones en los wall balls.|Usá el descanso para bajar pulsaciones sin enfriarte." },
+            9: { type: "SIMULATION", level: "AVANZADO", name: "RACE SIMULATION", description: "Un bloque largo y específico para ensayar estrategia, transiciones y distribución del esfuerzo.", duration: "75 MIN", goal: "PREPARACIÓN COMPETITIVA", format: "3 RONDAS", workout: "3 RONDAS|1,5 KM RUN|25 M SLED PUSH|1 KM RUN|500 M ROW|100 M FARMER CARRY|20 SANDBAG LUNGES|DESCANSO: 4 MINUTOS ENTRE RONDAS", strategy: "Probá el equipamiento y las cargas de competencia.|Ensayá transiciones sin detener el reloj.|Terminá cada ronda con una reserva que te permita sostener el bloque." },
+            10: { type: "PEAK", level: "AVANZADO", name: "PEAK PERFORMANCE", description: "La sesión más demandante: volumen alto, descansos cortos y foco total en ejecutar.", duration: "80 MIN", goal: "RENDIMIENTO MÁXIMO", format: "6 RONDAS", workout: "6 RONDAS|1 KM RUN|500 M SKI ERG|20 M SLED PULL|10 BURPEES|25 WALL BALLS|DESCANSO: 2 MINUTOS ENTRE RONDAS", strategy: "Calentá de forma completa antes de comenzar.|Mantené la carrera dentro de tu ritmo de competencia.|Cortá la sesión si la técnica se deteriora de forma repetida." }
+        };
+
+        const plan = plans[new URLSearchParams(window.location.search).get("id") || "1"];
+        if (plan) {
+            document.getElementById("plan-type").textContent = plan.type;
+            document.getElementById("plan-category").textContent = plan.level;
+            document.getElementById("plan-name").textContent = plan.name;
+            document.getElementById("plan-description").textContent = plan.description;
+            document.getElementById("plan-duration").textContent = plan.duration;
+            document.getElementById("plan-level").textContent = plan.level;
+            document.getElementById("plan-goal").textContent = plan.goal;
+            document.getElementById("plan-format").textContent = plan.format;
+            document.getElementById("plan-workout-content").innerHTML = plan.workout.split("|").join("<br>");
+            document.getElementById("plan-strategy-content").innerHTML = plan.strategy.split("|").join("<br><br>");
+            document.title = "FORGUE X | " + plan.name;
+        }
+    </script>
+</body>
+</html>
